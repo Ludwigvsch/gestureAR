@@ -135,7 +135,9 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.1
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 5968067557015828241, guid: 15d12a9aa9ba4b64285e772d8ef4fe22, type: 2}
+  - {fileID: -5475518953446838920, guid: fb7333a2df64ba94dbaa26968974f4d1, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -613,11 +615,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: MRTKTutorialgettingstarted
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: 
+  metroCertificatePath: C:\Users\oren\workspace\gestureAR\Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 006994b6a35ed901
   metroApplicationDescription: Template_3D
   wsaImages: {}
   metroTileShortName: MRTK Tutorials
