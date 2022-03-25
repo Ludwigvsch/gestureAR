@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameMenu
   - TitleText
+  - test
   layers:
   - Default
   - TransparentFX

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     private GameObject gameMenu;
     private GameObject titleText;
     private Timer timerInstance;
-
+    public GameObject cube;
 
     //events
     void onEnable()
@@ -40,6 +40,12 @@ public class GameManager : MonoBehaviour
         FadeTitleWrapper();
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
     private void inactiveGameMenu()
     {
         gameMenu.SetActive(false);
@@ -57,11 +63,12 @@ public class GameManager : MonoBehaviour
         StartCoroutine(fadeTitle.Fade(3f, titleText));
     }
 
-    // Update is called once per frame
-    void Update()
+    public void onClickFlagUI()
     {
-
+        bool state = cube.activeSelf;
+        cube.SetActive(!state);
     }
+
 
 
 }
