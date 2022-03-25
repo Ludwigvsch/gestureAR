@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
 
     private void ActivateGameMenu()
     {
-        Debug.Log("activate");
         gameMenu.SetActive(true);
     }
 
