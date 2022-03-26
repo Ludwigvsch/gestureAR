@@ -26,9 +26,11 @@ public class ClickHelper : MonoBehaviour
     public void NextGestureClick()
     {
         GameManager.Instance.trainingPanel.SetActive(false);
+        GameManager.Instance.RemoveModels();
         if (GameManager.Instance.currentGesture++ <= 3)
         {
-            Debug.Log("Next Gesture");
+            Debug.Log("Next Gesture" + GameManager.Instance.currentGesture);
+
             GameManager.Instance.onClickFlagUI();
         }
         else

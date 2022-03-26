@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private List<string> keysArray;
     public int currentGesture = 0;
     private GameObject correctAnswerPanel;
+    private List<GameObject> models;
 
     private void Awake()
     {
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
         gestureLookup.Add("rockNroll", RockNRoll);
         gestureLookup.Add("crossedFingers", crossedFingers);
         keysArray = new List<string>(gestureLookup.Keys);
+        models = new List<GameObject>();
 
 
         //generate scripts 
@@ -177,17 +179,32 @@ public class GameManager : MonoBehaviour
         switch (key)
         {
             case "Thumb":
-                Instantiate(Resources.Load("thumbsUp") as GameObject);
+                GameObject g1 = Instantiate(Resources.Load("thumbsUp") as GameObject);
+                models.Add(g1);
                 break;
             case "fine":
-                Instantiate(Resources.Load("ok") as GameObject);
+                GameObject g2 = Instantiate(Resources.Load("ok") as GameObject);
+                models.Add(g2);
                 break;
             case "crossedFingers":
-                Instantiate(Resources.Load("crossedFingers") as GameObject);
+                GameObject g3 = Instantiate(Resources.Load("crossedFingers") as GameObject);
+                models.Add(g3);
                 break;
             case "rockNroll":
-                Instantiate(Resources.Load("rockNroll") as GameObject);
+                GameObject g4 = Instantiate(Resources.Load("rockNroll") as GameObject);
+                models.Add(g4);
                 break;
         }
+
     }
+
+    public void RemoveModels()
+    {
+        for (int i = 0; i < models.Count; i++)
+        {
+            Destroy(models[i]);
+        }
+    }
+
+
 }
