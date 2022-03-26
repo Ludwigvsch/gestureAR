@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public int currentGesture = 0;
     private GameObject correctAnswerPanel;
     private List<GameObject> models;
+    public GameObject building;
+    public bool buildingVisible = false;
 
     private void Awake()
     {
@@ -166,6 +168,31 @@ public class GameManager : MonoBehaviour
         // map.get(curentGesture).correct
         correctAnswerPanel.GetComponentsInChildren<TMP_Text>()[1].text =
             gestureLookup[keysArray[currentGesture]].correct;
+        switch (currentGesture)
+        {
+            case 0:
+                building = Instantiate(Resources.Load("thailand")) as GameObject;
+                buildingVisible = true;
+                building.GetComponent<AudioSource>().Play();
+                break;
+            case 1:
+                building = Instantiate(Resources.Load("italy")) as GameObject;
+                buildingVisible = true;
+                building.GetComponent<AudioSource>().Play();
+                break;
+            case 2:
+                building = Instantiate(Resources.Load("france")) as GameObject;
+                buildingVisible = true;
+                building.GetComponent<AudioSource>().Play();
+                break;
+            case 3:
+                building = Instantiate(Resources.Load("vietnam")) as GameObject;
+                buildingVisible = true;
+                building.GetComponent<AudioSource>().Play();
+                break;
+
+        }
+        Debug.Log("Building created");
     }
 
     public void ShowFinalPanel()
