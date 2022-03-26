@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Microsoft.MixedReality.Toolkit.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -96,6 +97,7 @@ public class GameManager : MonoBehaviour
         if(tagName.Equals("Thumb"))
         {
             // correct answer, trigger correct screen
+            ShowCultureInfo();
             Debug.Log("Correct Answer");
         }
         else 
@@ -113,6 +115,14 @@ public class GameManager : MonoBehaviour
                 onClickFlagUI();
             }
         }
+    }
+
+    public void ShowCultureInfo()
+    {
+        //instantiate part 1 final panel
+        GameObject part1FinalPanel = Instantiate(Resources.Load("Part1FinalPanel") as GameObject, gameMenu.transform.position, gameMenu.transform.rotation);
+        // map.get(curentGesture).correct
+        part1FinalPanel.GetComponentsInChildren<TMP_Text>()[1].text = "" + "Winner winner chicken dinner";
     }
 
 

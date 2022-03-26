@@ -13,7 +13,8 @@
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
-
+# Don't add vscode files
+.vsconfig
 # Recordings can get excessive in size
 /[Rr]ecordings/
 
