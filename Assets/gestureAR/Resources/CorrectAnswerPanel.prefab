@@ -388,7 +388,19 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 087b16002c2b0b445baa3ed3beae44a9, type: 2}
   OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7978964653856693110, guid: 9720180158efa9440b83fa9ae318e37a, type: 3}
+        m_TargetAssemblyTypeName: ClickHelper, Assembly-CSharp
+        m_MethodName: NextGestureClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   Events:
   - Event:
       m_PersistentCalls:
@@ -683,7 +695,7 @@ MonoBehaviour:
   iconSprite: {fileID: 21300000, guid: 20f25674b9512834f88938d45ed495d7, type: 3}
   iconQuadRenderer: {fileID: 233847275425015496}
   iconQuadTextureNameID: _MainTex
-  iconQuadTexture: {fileID: 2800000, guid: 8d0274d8bc6a17844a08b493920d9491, type: 3}
+  iconQuadTexture: {fileID: 2800000, guid: d74cdc58c5d172a469ea5ca987eb17f6, type: 3}
   defaultButtonQuadMaterial: {fileID: 2100000, guid: fa419ab56051229449e3b813df8f295f, type: 2}
   iconSet: {fileID: 11400000, guid: 8b386ef895f7c924f8c4b03d1d3ed683, type: 2}
   defaultIconSet: {fileID: 11400000, guid: 8b386ef895f7c924f8c4b03d1d3ed683, type: 2}
@@ -2413,7 +2425,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Congratulations!
+  m_text: That's the correct gesture!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2b6842022aaafc943a198cfed394fac2, type: 2}
   m_sharedMaterial: {fileID: -5797537224785159275, guid: 2b6842022aaafc943a198cfed394fac2, type: 2}
@@ -2504,7 +2516,7 @@ GameObject:
   - component: {fileID: 8866460453553904954}
   - component: {fileID: 734843058380858401}
   m_Layer: 0
-  m_Name: Part1FinalPanel
+  m_Name: CorrectAnswerPanel
   m_TagString: GameMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
