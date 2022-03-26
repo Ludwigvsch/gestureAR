@@ -14,8 +14,11 @@ public class GameManager : MonoBehaviour
     public GameObject cube;
     private MovementScript mover;
     private int tryNumber = 1;
-
     private GameObject questionTemplate;
+    private Gesture thumbsUp;
+    private Gesture RockNRoll;
+    private Gesture Ok;
+    private Gesture crossedFingers;
 
     private void Awake()
     {
@@ -37,6 +40,8 @@ public class GameManager : MonoBehaviour
         fadeTitle.onFadeComplete += ActivateGameMenu;
     }
 
+    private Dictionary<string, Gesture> gestureLookup;
+
     void Start()
     {
         //get references
@@ -45,6 +50,20 @@ public class GameManager : MonoBehaviour
         titleText = GameObject.FindGameObjectWithTag("TitleText");
         timerInstance = gameObject.AddComponent<Timer>();
         mover = gameObject.AddComponent<MovementScript>();
+        thumbsUp = new Gesture("How would you signal that you approve of something?", "Did you know that in Thailand, the thumbs up gesture is quite offensive? It is equivalent of saying “screw you” in Bangladesh, Iran, and Thailand.", "The gesture you made is incorrect. Here is the correct answer. Please observe.");
+        RockNRoll = new Gesture("What hand signal would you use at a concert?", "Did you know that in (Insert a country name), it means devil’s horn and sexual insult?", "In concert in US, a popular hand signal used is this ROCK & ROLL gesture to indicate support like “Hell yeah”, “rock on”, and “good times”");
+        Ok = new Gesture("What hand signal would you use to indicate that you are fine with something in the US?", "Did you know that in (Insert a country name), it can mean “screw you” in these following countries", "In concert in US, a popular hand signal used gesture to indicate approval.");
+        crossedFingers = new Gesture("What hand signal would you use to symbolize hope?"
+        , "Did you know that in (Insert a country name), it can mean “screw you” in Vietnam.", "In US, this mean “good luck”. However, in Vietnam, this same gesture is actually an obscene gesture.");
+        gestureLookup = new Dictionary<string, Gesture>();
+        gestureLookup.Add("Thumb", thumbsUp);
+        gestureLookup.Add("fine", Ok);
+        gestureLookup.Add("rockNroll", RockNRoll);
+        gestureLookup.Add("crossedFingers", crossedFingers);
+
+
+        //generate scripts 
+
 
         SubscribeInstanceEvents();
 
@@ -79,8 +98,6 @@ public class GameManager : MonoBehaviour
     public void onClickFlagUI()
     {
         questionTemplate.SetActive(true);
-        Interactable interactable = questionTemplate.GetComponentInChildren<Interactable>();
-        //interactable.InteractableEvents.Add(OnGuess);
         gameMenu.SetActive(false);
     }
 
@@ -94,16 +111,16 @@ public class GameManager : MonoBehaviour
     public void ProcessAiOutput(string tagName)
     {
         // change with map.key
-        if(tagName.Equals("Thumb"))
+        if (tagName.Equals("Thumb"))
         {
             // correct answer, trigger correct screen
             ShowCultureInfo();
             Debug.Log("Correct Answer");
         }
-        else 
+        else
         {
             tryNumber++;
-            if(tryNumber >= 4)
+            if (tryNumber >= 4)
             {
                 // training begins
                 Debug.Log("Out of tries");
