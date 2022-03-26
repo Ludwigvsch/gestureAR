@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private Timer timerInstance;
     public GameObject cube;
     private MovementScript mover;
+    private int tryNumber = 1;
     private GameObject questionTemplate;
     private Gesture thumbsUp;
     private Gesture RockNRoll;
@@ -69,6 +70,10 @@ public class GameManager : MonoBehaviour
         inactiveGameMenu();
         timerInstance.StartTime(7f, FadeTitleWrapper);
         StartCoroutine(mover.Move(7f, titleText, 1f));
+
+        //instantiate question template
+        questionTemplate = Instantiate(Resources.Load("QuestionText") as GameObject, gameMenu.transform.position, gameMenu.transform.rotation);
+        questionTemplate.SetActive(false);
     }
 
 
@@ -91,19 +96,40 @@ public class GameManager : MonoBehaviour
 
     public void onClickFlagUI()
     {
-        questionTemplate = Instantiate(Resources.Load("QuestionText") as GameObject, gameMenu.transform.position, gameMenu.transform.rotation);
-        Interactable interactable = questionTemplate.GetComponentInChildren<Interactable>();
-        //interactable.InteractableEvents.Add(OnGuess);
+        questionTemplate.SetActive(true);
         gameMenu.SetActive(false);
     }
 
     public void OnGuess()
     {
-
         questionTemplate.SetActive(false);
         TriggerImageCapture tic = new TriggerImageCapture();
         tic.TriggerCapture();
+    }
 
+    public void ProcessAiOutput(string tagName)
+    {
+        // change with map.key
+        if (tagName.Equals("Thumb"))
+        {
+            // correct answer, trigger correct screen
+            Debug.Log("Correct Answer");
+        }
+        else
+        {
+            tryNumber++;
+            if (tryNumber >= 4)
+            {
+                // training begins
+                Debug.Log("Out of tries");
+            }
+            else
+            {
+                // wrong answer, try again
+                Debug.Log("Try Again");
+                onClickFlagUI();
+            }
+        }
     }
 
 
