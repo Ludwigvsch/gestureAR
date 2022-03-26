@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
-public class TriggerImageCapture : MonoBehaviour
+public class ClickHelper : MonoBehaviour
 {
-
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +16,8 @@ public class TriggerImageCapture : MonoBehaviour
 
     }
 
-    public void TriggerCapture()
+    public void handleClick()
     {
-        Instantiate(Resources.Load("TimerCanvas") as GameObject);
-
+        GameManager.Instance.OnGuess();
     }
 }

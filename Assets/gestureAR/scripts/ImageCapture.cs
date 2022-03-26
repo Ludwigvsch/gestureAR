@@ -173,8 +173,8 @@ public class ImageCapture : MonoBehaviour
         photoCaptureObject = null;
 
         // Call the image analysis
-        StartCoroutine(CustomVisionAnalyser.Instance.AnalyseLastImageCaptured(filePath, text));
-        
+        StartCoroutine(CustomVisionAnalyser.Instance.AnalyseLastImageCaptured(filePath));
+
     }
 
     /// <summary>

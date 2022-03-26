@@ -1,13 +1,11 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.IO;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 
 public class CustomVisionAnalyser : MonoBehaviour
 {
-    public static TMP_Text text;
     /// <summary>
     /// Unique instance of this class
     /// </summary>
@@ -40,9 +38,8 @@ public class CustomVisionAnalyser : MonoBehaviour
     /// <summary>
     /// Call the Computer Vision Service to submit the image.
     /// </summary>
-    public IEnumerator AnalyseLastImageCaptured(string imagePath, TMP_Text txt)
+    public IEnumerator AnalyseLastImageCaptured(string imagePath)
     {
-        text = txt;
         Debug.Log("Analyzing...");
 
         WWWForm webForm = new WWWForm();
@@ -77,17 +74,16 @@ public class CustomVisionAnalyser : MonoBehaviour
 
             // The response will be in JSON format, therefore it needs to be deserialized
             string tagName = GetTagName(jsonResponse);
-            text.text = tagName;
+            Debug.Log("result: " + tagName);
 
             // Stop the analysis process
             ImageCapture.Instance.ResetImageCapture();
         }
     }
 
-    
+
     static string GetTagName(string jsonString)
     {
-        text.text = "Button Pressed";
         var json = JObject.Parse(jsonString);
         string tagName = "";
         double probability = 0;
