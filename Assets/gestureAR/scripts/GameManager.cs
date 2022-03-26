@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     private Gesture RockNRoll;
     private Gesture Ok;
     private Gesture crossedFingers;
+    private List<string> keysArray;
+    public int currentGesture = 0;
+    private GameObject correctAnswerPanel;
 
     private void Awake()
     {
@@ -60,6 +63,7 @@ public class GameManager : MonoBehaviour
         gestureLookup.Add("fine", Ok);
         gestureLookup.Add("rockNroll", RockNRoll);
         gestureLookup.Add("crossedFingers", crossedFingers);
+        keysArray = new List<string>(gestureLookup.Keys);
 
 
         //generate scripts 
@@ -75,6 +79,11 @@ public class GameManager : MonoBehaviour
         //instantiate question template
         questionTemplate = Instantiate(Resources.Load("QuestionText") as GameObject, gameMenu.transform.position, gameMenu.transform.rotation);
         questionTemplate.SetActive(false);
+
+        // instantiate correct answer panel
+        //instantiate correct answer panel
+        correctAnswerPanel = Instantiate(Resources.Load("CorrectAnswerPanel") as GameObject, gameMenu.transform.position, gameMenu.transform.rotation);
+        correctAnswerPanel.SetActive(false);
     }
 
 
@@ -97,6 +106,9 @@ public class GameManager : MonoBehaviour
 
     public void onClickFlagUI()
     {
+        correctAnswerPanel.SetActive(false);
+        questionTemplate.GetComponentsInChildren<TMP_Text>()[1].text =
+            gestureLookup[keysArray[currentGesture]].question;
         questionTemplate.SetActive(true);
         gameMenu.SetActive(false);
     }
@@ -110,8 +122,8 @@ public class GameManager : MonoBehaviour
 
     public void ProcessAiOutput(string tagName)
     {
-        // change with map.key
-        if (tagName.Equals("Thumb"))
+        // if gesture is correct
+        if (tagName.Equals(keysArray[currentGesture]))
         {
             // correct answer, trigger correct screen
             ShowCultureInfo();
@@ -124,11 +136,17 @@ public class GameManager : MonoBehaviour
             {
                 // training begins
                 Debug.Log("Out of tries");
+                questionTemplate.GetComponentsInChildren<TMP_Text>()[1].text =
+                    gestureLookup[keysArray[currentGesture]].incorrect;
+                // plug in hand coach training here
+                // hand coach should call clickhelper.nextgestureclick()
             }
             else
             {
                 // wrong answer, try again
                 Debug.Log("Try Again");
+                questionTemplate.GetComponentsInChildren<TMP_Text>()[0].text =
+                    "Incorrect! Please try again";
                 onClickFlagUI();
             }
         }
@@ -136,10 +154,15 @@ public class GameManager : MonoBehaviour
 
     public void ShowCultureInfo()
     {
-        //instantiate part 1 final panel
-        GameObject part1FinalPanel = Instantiate(Resources.Load("Part1FinalPanel") as GameObject, gameMenu.transform.position, gameMenu.transform.rotation);
+        correctAnswerPanel.SetActive(true);
         // map.get(curentGesture).correct
-        part1FinalPanel.GetComponentsInChildren<TMP_Text>()[1].text = "" + "Winner winner chicken dinner";
+        correctAnswerPanel.GetComponentsInChildren<TMP_Text>()[1].text = 
+            gestureLookup[keysArray[currentGesture]].correct;
+    }
+
+    public void ShowFinalPanel()
+    {
+        GameObject finalPanel = Instantiate(Resources.Load("FinalPanel") as GameObject, gameMenu.transform.position, gameMenu.transform.rotation);
     }
 
 
