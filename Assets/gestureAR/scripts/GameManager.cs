@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private MovementScript mover;
     private int tryNumber = 1;
     private GameObject questionTemplate;
+    public GameObject trainingPanel;
     private Gesture thumbsUp;
     private Gesture RockNRoll;
     private Gesture Ok;
@@ -84,6 +85,9 @@ public class GameManager : MonoBehaviour
         //instantiate correct answer panel
         correctAnswerPanel = Instantiate(Resources.Load("CorrectAnswerPanel") as GameObject, gameMenu.transform.position, gameMenu.transform.rotation);
         correctAnswerPanel.SetActive(false);
+
+        trainingPanel = Instantiate(Resources.Load("TrainingPanel") as GameObject, gameMenu.transform.position, gameMenu.transform.rotation);
+        trainingPanel.SetActive(false);
     }
 
 
@@ -136,9 +140,11 @@ public class GameManager : MonoBehaviour
             {
                 // training begins
                 Debug.Log("Out of tries");
-                questionTemplate.GetComponentsInChildren<TMP_Text>()[1].text =
+                trainingPanel.SetActive(true);
+                trainingPanel.GetComponentsInChildren<TMP_Text>()[1].text =
                     gestureLookup[keysArray[currentGesture]].incorrect;
                 // plug in hand coach training here
+                StartTraining(keysArray[currentGesture]);
                 // hand coach should call clickhelper.nextgestureclick()
             }
             else
@@ -156,7 +162,7 @@ public class GameManager : MonoBehaviour
     {
         correctAnswerPanel.SetActive(true);
         // map.get(curentGesture).correct
-        correctAnswerPanel.GetComponentsInChildren<TMP_Text>()[1].text = 
+        correctAnswerPanel.GetComponentsInChildren<TMP_Text>()[1].text =
             gestureLookup[keysArray[currentGesture]].correct;
     }
 
