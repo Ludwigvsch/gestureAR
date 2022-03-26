@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
         //alter environement for start
         inactiveGameMenu();
-        FadeTitleWrapper();
+        timerInstance.StartTime(7f, FadeTitleWrapper);
     }
 
     // Update is called once per frame
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     //callback wrappers for use with timer
     public void FadeTitleWrapper()
     {
-        StartCoroutine(fadeTitle.Fade(3f, titleText));
+        StartCoroutine(fadeTitle.Fade(2f, titleText));
     }
 
     public void onClickFlagUI()
