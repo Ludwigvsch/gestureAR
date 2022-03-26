@@ -53,3 +53,5 @@ Three primary interaction models
 3. Gaze and commit
     1. modality
         1. look at the object and then a commit action which can include voice command, button press or hand gesture.
+
+        

@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 2160509732138384865}
   - component: {fileID: 7837104716872090874}
   m_Layer: 0
-  m_Name: QuestionText
+  m_Name: TrainingPanel
   m_TagString: GameMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -212,7 +212,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 965920942417463674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0.86}
   m_LocalScale: {x: 0.5, y: 0.3, z: 1}
   m_Children:
   - {fileID: 965920942477807761}
@@ -495,7 +495,7 @@ Transform:
   m_Children:
   - {fileID: 965920941707721071}
   - {fileID: 7976986135795423879}
-  - {fileID: 8278891771823703618}
+  - {fileID: 7926916682011912559}
   - {fileID: 2295068921727376904}
   - {fileID: 1901434900663467880}
   - {fileID: 2230073164723313628}
@@ -1122,8 +1122,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.3
-  m_fontSizeBase: 25.3
+  m_fontSize: 22.14
+  m_fontSizeBase: 22.14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1158,7 +1158,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -16.951033, y: -5.7707686, z: -18.1603, w: -14.505683}
+  m_margin: {x: -7.462034, y: -5.7707686, z: -18.070593, w: -14.505683}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1442,7 +1442,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &7475795576670378030
+--- !u!1001 &8888351931754034947
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1497,10 +1497,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonHL
       objectReference: {fileID: 0}
+    - target: {fileID: 4827252632969215702, guid: 0975c355bf309a646862cef0aceeeb9a, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: NextGestureClick
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0975c355bf309a646862cef0aceeeb9a, type: 3}
---- !u!4 &8278891771823703618 stripped
+--- !u!4 &7926916682011912559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1539057086362230380, guid: 0975c355bf309a646862cef0aceeeb9a, type: 3}
-  m_PrefabInstance: {fileID: 7475795576670378030}
+  m_PrefabInstance: {fileID: 8888351931754034947}
   m_PrefabAsset: {fileID: 0}
