@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     private Gesture crossedFingers;
     private List<string> keysArray;
     public int currentGesture = 0;
-    private GameObject correctAnswerPanel;
+    public GameObject correctAnswerPanel;
     private List<GameObject> models;
     public GameObject building;
     public bool buildingVisible = false;
@@ -115,10 +115,10 @@ public class GameManager : MonoBehaviour
     public void onClickFlagUI()
     {
         correctAnswerPanel.SetActive(false);
+        gameMenu.SetActive(false);
         questionTemplate.GetComponentsInChildren<TMP_Text>()[1].text =
             gestureLookup[keysArray[currentGesture]].question;
         questionTemplate.SetActive(true);
-        gameMenu.SetActive(false);
     }
 
     public void OnGuess()
@@ -134,6 +134,7 @@ public class GameManager : MonoBehaviour
         if (tagName.Equals(keysArray[currentGesture]))
         {
             // correct answer, trigger correct screen
+            tryNumber = 1;
             ShowCultureInfo();
             Debug.Log("Correct Answer");
         }
@@ -214,7 +215,7 @@ public class GameManager : MonoBehaviour
                 models.Add(g2);
                 break;
             case "crossedFingers":
-                GameObject g3 = Instantiate(Resources.Load("crossedFingers") as GameObject);
+                GameObject g3 = Instantiate(Resources.Load("fingersCrossed") as GameObject);
                 models.Add(g3);
                 break;
             case "rockNroll":

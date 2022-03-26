@@ -26,13 +26,15 @@ public class ClickHelper : MonoBehaviour
     public void NextGestureClick()
     {
         GameManager.Instance.trainingPanel.SetActive(false);
+        GameManager.Instance.correctAnswerPanel.SetActive(false);
         GameManager.Instance.RemoveModels();
         if (GameManager.Instance.buildingVisible)
         {
             Destroy(GameManager.Instance.building);
             GameManager.Instance.buildingVisible = false;
         }
-        if (GameManager.Instance.currentGesture++ <= 3)
+        GameManager.Instance.currentGesture++;
+        if (GameManager.Instance.currentGesture <= 3)
         {
             Debug.Log("Next Gesture" + GameManager.Instance.currentGesture);
 
@@ -40,7 +42,7 @@ public class ClickHelper : MonoBehaviour
         }
         else
         {
-            Debug.Log("Game Over");
+            Instantiate(Resources.Load("FinalPanel") as GameObject);
         }
     }
 

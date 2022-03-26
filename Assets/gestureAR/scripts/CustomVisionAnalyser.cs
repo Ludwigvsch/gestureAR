@@ -19,7 +19,7 @@ public class CustomVisionAnalyser : MonoBehaviour
     /// <summary>
     /// Insert your prediction endpoint here
     /// </summary>
-    private string predictionEndpoint = "https://eastus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/76a98625-9237-4c42-9890-4773962233f2/detect/iterations/Iteration5/image";
+    private string predictionEndpoint = "https://eastus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/76a98625-9237-4c42-9890-4773962233f2/detect/iterations/Iteration6/image";
 
     /// <summary>
     /// Byte array of the image to submit for analysis
