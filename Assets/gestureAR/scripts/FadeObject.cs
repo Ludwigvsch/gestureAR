@@ -29,7 +29,6 @@ public class FadeObject : MonoBehaviour
         }
         if (onFadeComplete != null)
         {
-            Debug.Log("finished fading");
             onFadeComplete();
         }
     }

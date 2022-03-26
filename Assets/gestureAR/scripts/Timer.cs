@@ -20,7 +20,6 @@ public class Timer : MonoBehaviour
         if (isCounting)
         {
             elapsedTime += Time.deltaTime;
-            Debug.Log(elapsedTime);
             if (elapsedTime >= secondsToCount)
             {
                 if (callback != null)
