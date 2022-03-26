@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public GameObject cube;
     private MovementScript mover;
 
+    private GameObject questionTemplate;
+
     //events
     void onEnable()
     {
@@ -63,8 +65,19 @@ public class GameManager : MonoBehaviour
 
     public void onClickFlagUI()
     {
-        Transform position = gameMenu.transform;
+        questionTemplate = Instantiate(Resources.Load("QuestionText") as GameObject, gameMenu.transform.position, gameMenu.transform.rotation) as GameObject;
+        if (questionTemplate == null)
+        {
+            Debug.Log("null");
+        }
         gameMenu.SetActive(false);
+    }
+
+    public void OnGuess()
+    {
+
+        questionTemplate.SetActive(false);
+
 
     }
 
