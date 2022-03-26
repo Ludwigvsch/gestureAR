@@ -54,10 +54,10 @@ public class GameManager : MonoBehaviour
         timerInstance = gameObject.AddComponent<Timer>();
         mover = gameObject.AddComponent<MovementScript>();
         thumbsUp = new Gesture("How would you signal that you approve of something?", "Did you know that in Thailand, the thumbs up gesture is quite offensive? It is equivalent of saying “screw you” in Bangladesh, Iran, and Thailand.", "The gesture you made is incorrect. Here is the correct answer. Please observe.");
-        RockNRoll = new Gesture("What hand signal would you use at a concert?", "Did you know that in (Insert a country name), it means devil’s horn and sexual insult?", "In concert in US, a popular hand signal used is this ROCK & ROLL gesture to indicate support like “Hell yeah”, “rock on”, and “good times”");
-        Ok = new Gesture("What hand signal would you use to indicate that you are fine with something in the US?", "Did you know that in (Insert a country name), it can mean “screw you” in these following countries", "In concert in US, a popular hand signal used gesture to indicate approval.");
+        RockNRoll = new Gesture("What hand signal would you use at a concert?", "Did you know that in Cuba, Brazil, Italy, Argentina and Spain, it means devil’s horn and sexual insult?", "In concert in US, a popular hand signal used is this ROCK & ROLL gesture to indicate support like “Hell yeah”, “rock on”, and “good times”");
+        Ok = new Gesture("What hand signal would you use to indicate that you are fine with something in the US?", "Did you know that in France, Germany and Brazil, it can mean “screw you” in these following countries", "In concert in US, a popular hand signal used gesture to indicate approval.");
         crossedFingers = new Gesture("What hand signal would you use to symbolize hope?"
-        , "Did you know that in (Insert a country name), it can mean “screw you” in Vietnam.", "In US, this mean “good luck”. However, in Vietnam, this same gesture is actually an obscene gesture.");
+        , "Did you know that in Vietnam, it can mean “screw you”?", "In the US, this mean “good luck”. However, in Vietnam, this same gesture is actually an obscene gesture.");
         gestureLookup = new Dictionary<string, Gesture>();
         gestureLookup.Add("Thumb", thumbsUp);
         gestureLookup.Add("fine", Ok);
@@ -165,6 +165,23 @@ public class GameManager : MonoBehaviour
         GameObject finalPanel = Instantiate(Resources.Load("FinalPanel") as GameObject, gameMenu.transform.position, gameMenu.transform.rotation);
     }
 
-
-
+    public void StartTraining(string key)
+    {
+        //start training here
+        switch (key)
+        {
+            case "Thumb":
+                Instantiate(Resources.Load("thumbsUp") as GameObject);
+                break;
+            case "fine":
+                Instantiate(Resources.Load("ok") as GameObject);
+                break;
+            case "crossedFingers":
+                Instantiate(Resources.Load("crossedFingers") as GameObject);
+                break;
+            case "rockNroll":
+                Instantiate(Resources.Load("rockNroll") as GameObject);
+                break;
+        }
+    }
 }
