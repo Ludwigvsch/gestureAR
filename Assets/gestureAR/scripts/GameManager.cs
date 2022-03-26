@@ -142,6 +142,23 @@ public class GameManager : MonoBehaviour
         part1FinalPanel.GetComponentsInChildren<TMP_Text>()[1].text = "" + "Winner winner chicken dinner";
     }
 
-
-
+    public void StartTraining(string key)
+    {
+        //start training here
+        switch (key)
+        {
+            case "Thumb":
+                Instantiate(Resources.Load("thumbsUp") as GameObject);
+                break;
+            case "fine":
+                Instantiate(Resources.Load("ok") as GameObject);
+                break;
+            case "crossedFingers":
+                Instantiate(Resources.Load("crossedFingers") as GameObject);
+                break;
+            case "rockNroll":
+                Instantiate(Resources.Load("rockNroll") as GameObject);
+                break;
+        }
+    }
 }
