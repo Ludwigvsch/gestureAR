@@ -78,6 +78,9 @@ public class CustomVisionAnalyser : MonoBehaviour
 
             // Stop the analysis process
             ImageCapture.Instance.ResetImageCapture();
+
+            // send model prediction to game manager
+            GameManager.Instance.ProcessAiOutput(tagName);
         }
     }
 
