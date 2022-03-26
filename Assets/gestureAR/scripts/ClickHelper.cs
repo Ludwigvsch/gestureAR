@@ -24,6 +24,11 @@ public class ClickHelper : MonoBehaviour
 
     public void NextGestureClick()
     {
+        if (GameManager.Instance.buildingVisible)
+        {
+            Destroy(GameManager.Instance.building);
+            GameManager.Instance.buildingVisible = false;
+        }
         if(GameManager.Instance.currentGesture++ <= 3)
         {
             Debug.Log("Next Gesture");
@@ -33,7 +38,6 @@ public class ClickHelper : MonoBehaviour
         {
             Debug.Log("Game Over");
         }
-
     }
 
     public void RestartScene()

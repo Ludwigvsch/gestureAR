@@ -6,6 +6,12 @@ TagManager:
   tags:
   - ProgressIcon
   - TitleText
+  - test
+  - GameMenu
+  - thailand
+  - france
+  - vietnam
+  - italy
   layers:
   - Default
   - TransparentFX
