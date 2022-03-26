@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Microsoft.MixedReality.Toolkit.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     private FadeObject fadeTitle;
     private GameObject gameMenu;
     private GameObject titleText;
@@ -12,6 +14,11 @@ public class GameManager : MonoBehaviour
     private MovementScript mover;
 
     private GameObject questionTemplate;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     //events
     void onEnable()
@@ -65,11 +72,9 @@ public class GameManager : MonoBehaviour
 
     public void onClickFlagUI()
     {
-        questionTemplate = Instantiate(Resources.Load("QuestionText") as GameObject, gameMenu.transform.position, gameMenu.transform.rotation) as GameObject;
-        if (questionTemplate == null)
-        {
-            Debug.Log("null");
-        }
+        questionTemplate = Instantiate(Resources.Load("QuestionText") as GameObject, gameMenu.transform.position, gameMenu.transform.rotation);
+        Interactable interactable = questionTemplate.GetComponentInChildren<Interactable>();
+        //interactable.InteractableEvents.Add(OnGuess);
         gameMenu.SetActive(false);
     }
 
@@ -77,7 +82,8 @@ public class GameManager : MonoBehaviour
     {
 
         questionTemplate.SetActive(false);
-
+        TriggerImageCapture tic = new TriggerImageCapture();
+        tic.TriggerCapture();
 
     }
 

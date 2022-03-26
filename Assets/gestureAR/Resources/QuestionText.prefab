@@ -2150,9 +2150,9 @@ MonoBehaviour:
   OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnGuess
+      - m_Target: {fileID: 7978964653856693110, guid: 9720180158efa9440b83fa9ae318e37a, type: 3}
+        m_TargetAssemblyTypeName: ClickHelper, Assembly-CSharp
+        m_MethodName: handleClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
