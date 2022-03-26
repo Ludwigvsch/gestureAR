@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private GameObject titleText;
     private Timer timerInstance;
     public GameObject cube;
+    private MovementScript mover;
 
     //events
     void onEnable()
@@ -32,19 +33,17 @@ public class GameManager : MonoBehaviour
         gameMenu = GameObject.FindGameObjectWithTag("GameMenu");
         titleText = GameObject.FindGameObjectWithTag("TitleText");
         timerInstance = gameObject.AddComponent<Timer>();
+        mover = gameObject.AddComponent<MovementScript>();
 
         SubscribeInstanceEvents();
 
         //alter environement for start
         inactiveGameMenu();
         timerInstance.StartTime(7f, FadeTitleWrapper);
+        StartCoroutine(mover.Move(7f, titleText, 1f));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
 
     private void inactiveGameMenu()
     {
@@ -64,8 +63,9 @@ public class GameManager : MonoBehaviour
 
     public void onClickFlagUI()
     {
-        bool state = cube.activeSelf;
-        cube.SetActive(!state);
+        Transform position = gameMenu.transform;
+        gameMenu.SetActive(false);
+
     }
 
 
