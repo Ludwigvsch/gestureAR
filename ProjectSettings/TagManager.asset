@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - GameMenu
+  - ProgressIcon
   - TitleText
-  - test
   layers:
   - Default
   - TransparentFX
